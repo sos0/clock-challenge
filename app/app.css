@@ -34,3 +34,10 @@ body{
   font-weight: 700;
   font-size: 2em;
 }
+
+#utc-drop{
+  margin: 10px;
+  width: 200px;
+  height: 40px;
+  font-size: 1.5em;
+}

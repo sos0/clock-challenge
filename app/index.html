@@ -21,8 +21,14 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div id="time-display">
+      <span id="date">{{ currDate }}</span><br/>
       <span id="time">{{ liveClock() }}</span><br/>
-      <span id="date">{{ currDate }}</span>
+      <label>UTC Offset:
+      <select id="utc-drop" ng-model="utc" ng-change="updateClock(utc)">
+        <option ng-repeat="opt in utcOptions"
+                value="{{opt}}">{{opt}}:00</option>
+      </select>
+      </label>
     </div>
   </div>
 
