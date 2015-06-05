@@ -1,9 +1,9 @@
 # clock-challenge
 
 Run:
-	npm install
-	
-	npm start
+<pre><code>npm install
+npm start
+</code></pre>
 
 Navigate to:
-	http://localhost:8000/app/index.html
+<pre><code>http://localhost:8000/app/index.html</code></pre>
