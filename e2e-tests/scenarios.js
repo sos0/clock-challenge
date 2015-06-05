@@ -2,41 +2,26 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
-describe('my app', function() {
+describe('myApp module testing', function(){
+  beforeEach(module('myApp'));
 
-  browser.get('index.html');
+  describe('ClockController', function(){
+    it('should be defined', inject(function($controller){
+      var controller = $controller('ClockController');
+      expect(controller).toBeDefined();
+    }))
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
-  });
-
-
-  describe('view1', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#/view1');
+    it('should update clock based on utc', function() {
+      select('utc').option('0');
+      expect(input('utc').val()).toBe('0');
     });
 
-
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
-    });
-
-  });
-
-
-  describe('view2', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#/view2');
-    });
-
-
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
-    });
-
-  });
-});
+    it('updates controller scope utc value only if within correct range', inject(function($controller){
+      var $scope = {};
+      var controller = $controller('ClockController', { $scope: $scope });
+      var utc = 0;
+      $scope.updateClock(utc);
+      expect($scope.utc).toEqual(utc);
+    })
+  })
+})
