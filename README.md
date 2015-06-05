@@ -2,7 +2,8 @@
 
 Run:
 	npm install
-	npm start
 	
+	npm start
+
 Navigate to:
 	http://localhost:8000/app/index.html
